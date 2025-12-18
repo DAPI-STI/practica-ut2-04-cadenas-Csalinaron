@@ -14,4 +14,24 @@ def phone_core(s: str) -> str:
     - La parte central debe ser numérica.
     """
     # TODO: usa .strip(), .split("-") y validaciones con .isdigit() y startswith("+")
+    s = s.strip()
+    partes = s.split("-")
+
+    # Debe haber exactamente 3 partes
+    if len(partes) != 3:
+        raise ValueError("Formato incorrecto")
+
+    prefijo = partes[0]
+    numero = partes[1]
+
+    # Prefijo debe empezar por "+"
+    if not prefijo.startswith("+"):
+        raise ValueError("Prefijo incorrecto")
+
+    # Parte central debe ser numérica
+    if not numero.isdigit():
+        raise ValueError("Número central no numérico")
+
+    return numero
+   
     raise NotImplementedError("Implementa phone_core(s)")
