@@ -18,22 +18,15 @@ def emphasize_vowel(phrase: str, vowel: str) -> str:
     - Recorre la frase carácter a carácter y construye una nueva cadena.
     """
     # TODO: validar y transformar
-    if len(vocal) != 1:
-        raise ValueError("Debe ser un solo carácter")
-    
-    vocal_min = vocal.lower()
-    vocales = "aeiou"
-    
-    if vocal_min not in vocales:
-        raise ValueError("La vocal debe ser a, e, i, o, u")
-    
-    resultado = []
-    
+    vocal = vocal.lower()
+    if len(vocal) != 1 or vocal not in "aeiou":
+        raise ValueError("La vocal no es válida")
+
+    resultado = ""
     for caracter in frase:
-        if caracter.lower() == vocal_min:
-            resultado.append(caracter.upper())
+        if caracter.lower() == vocal:
+            resultado += caracter.upper()
         else:
-            resultado.append(caracter)
-    
-    return "".join(resultado)
+            resultado += caracter
+    return resultado
     raise NotImplementedError("Implementa emphasize_vowel(phrase, vowel)")
